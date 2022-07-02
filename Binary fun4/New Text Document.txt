@@ -1,0 +1,39 @@
+void binary (){
+struct book c[4];
+f2=fopen("books.txt","r");
+for (int i=0; i<4; i++){
+    fscanf(f2,"%d %d %s",&c[i].id,&c[i].quantity,c[i].name);
+}
+fclose(f2);
+
+ char t[20];  int d,q ;
+for (int i=0;i<3;i++){
+    for (int j=0;j<3;j++)
+    {
+        if (strcmp(c[j].name,c[j+1].name) > 0) {
+            strcpy(t,c[j].name);                      d = c[j].id;                q = c[j].quantity;
+            strcpy(c[j].name,c[j+1].name);       c[j].id=c[j+1].id;          c[j].quantity = c[j+1].quantity;
+            strcpy(c[j+1].name,t);                    c[j+1].id = d;              c[j+1].quantity = q ;              }
+    }
+         }
+for (int i=0; i<4; i++)
+    printf("\n%d\t\t%s\t\t%d",c[i].id,c[i].name,c[i].quantity);
+
+char n[10]; printf("\nenter name book to search : ");  getchar();  scanf("%s",n); getchar();
+int l=0,h=3; int m;
+while (l<=h){
+m=(l+h)/2;
+if (strcmp(n,c[m].name)== 0){
+    printf("%d\t\t%d\t\t%[^\n]s\n",c[m].id,c[m].quantity,c[m].name);
+    break;
+    }
+if (strcmp(n,c[m].name) < 0)
+    h=m-1;
+if (strcmp(n,c[m].name) > 0)
+    l=m+1;
+}
+
+if (l>h)
+    printf("not found");
+
+}
